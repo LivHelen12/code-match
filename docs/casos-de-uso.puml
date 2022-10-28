@@ -1,0 +1,50 @@
+@startuml Casos de Uso
+
+left to right direction
+
+' Declarar os atores
+actor Usuário as us
+actor Instrutor as in
+actor Aprendiz as ap
+
+' Especialização do usuário
+in -right-|> us
+ap -left-|> us
+
+' Declarar os casos de uso
+package "Code Match" {
+  usecase (Enviar mensagem de texto) as uc1
+  usecase (Realizar cadastro) as uc2
+  usecase (Escolher perfil) as uc3
+  usecase (Receber notificação) as uc4
+  usecase (Criar sala de suporte) as uc5
+  usecase (Entrar em uma sala de suporte) as  uc6
+  usecase (Definir pontuação) as uc7
+  usecase (Executar rotina de matching) as uc8
+  usecase (Definir tecnologias dominadas) as uc9
+  uc6 ..> uc8 : <<includes>>
+  usecase (Solicitar ajuda) as uc10
+  usecase (Definir tecnologias para ajuda) as uc11
+  uc10 ..> uc11 : <<includes>>
+  usecase (Cadastrar tag de tecnologia) as uc12
+  usecase (Realizar login) as uc13
+}
+
+' Relacionar os casos de uso com o Usuário
+us --> uc1
+us --> uc2
+us --> uc3
+us --> uc7
+us --> uc12
+us --> uc13
+
+' Relacionar os casos de uso com o Instrutor
+in --> uc4
+in --> uc5
+in --> uc9
+
+' Relacionar os casos de uso com o Aprendiz
+ap --> uc6
+ap --> uc10
+
+@enduml
